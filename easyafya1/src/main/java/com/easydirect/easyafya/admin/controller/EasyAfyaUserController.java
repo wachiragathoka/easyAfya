@@ -18,6 +18,7 @@ import com.easydirect.easyafya.repo.interfaces.EasyAfyaUserRepo;
  * @author MGathoka
  *
  */
+
 @Controller
 @RequestMapping(path="/users")
 public class EasyAfyaUserController {
