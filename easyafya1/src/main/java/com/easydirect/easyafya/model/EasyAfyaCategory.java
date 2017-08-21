@@ -3,6 +3,8 @@
  */
 package com.easydirect.easyafya.model;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -28,14 +30,14 @@ public class EasyAfyaCategory {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long easyafya_category_id;
+	private long easyafya_category_id;
 	
 	
 	@Column(name="description" )
 	private String description;
 	
 	@Temporal(TemporalType.TIMESTAMP)
-	private String dateCreated;
+	private Date dateCreated;
 	
 	@ManyToOne
 	private EasyAfyaUsers easyAfyaUsers;
@@ -43,7 +45,7 @@ public class EasyAfyaCategory {
 	/**
 	 * @return the easyafya_category_id
 	 */
-	public Long getEasyafya_category_id() {
+	public long getEasyafya_category_id() {
 		return easyafya_category_id;
 	}
 
@@ -71,14 +73,14 @@ public class EasyAfyaCategory {
 	/**
 	 * @return the dateCreated
 	 */
-	public String getDateCreated() {
+	public Date getDateCreated() {
 		return dateCreated;
 	}
 
 	/**
 	 * @param dateCreated the dateCreated to set
 	 */
-	public void setDateCreated(String dateCreated) {
+	public void setDateCreated(Date dateCreated) {
 		this.dateCreated = dateCreated;
 	}
 

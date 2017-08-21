@@ -29,7 +29,7 @@ public class EasyAfyaUsers {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)	
-	private Long easyafya_user_id;
+	private long easyafya_user_id;
 	
 	@Column(name="firstname")
 	private String fisrtName;
@@ -54,7 +54,7 @@ public class EasyAfyaUsers {
 	/**
 	 * @return the easyafya_user_id
 	 */
-	public Long getEasyafya_user_id() {
+	public long getEasyafya_user_id() {
 		return easyafya_user_id;
 	}
 

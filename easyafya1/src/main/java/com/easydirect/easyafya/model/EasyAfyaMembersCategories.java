@@ -28,7 +28,7 @@ public class EasyAfyaMembersCategories {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long easyafya_members_category_id;
+	private long easyafya_members_category_id;
 	
 	private String description;
 	
