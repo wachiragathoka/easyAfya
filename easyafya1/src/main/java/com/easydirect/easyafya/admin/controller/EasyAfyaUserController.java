@@ -23,7 +23,7 @@ import com.easydirect.easyafya.repo.interfaces.EasyAfyaUserRepo;
  */
 
 @Controller
-//@RequestMapping(path="/users")
+@RequestMapping(path="/users")
 public class EasyAfyaUserController {
 	
 	private final static Logger LOGGER = Logger.getLogger(EasyAfyaUserController.class.getName());
