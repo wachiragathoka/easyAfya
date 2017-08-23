@@ -39,8 +39,7 @@ public class EasyAfyaUserController {
 		return "admin/users";
 	}
 	
-	@PostMapping("/users")
-	
+	@PostMapping("/users")	
 	public @ResponseBody String saveUser(@ModelAttribute  EasyAfyaUsers easyAfyaUsers){
 		
 		//easyAfyaUsers.setFisrtName(fisrtName);
