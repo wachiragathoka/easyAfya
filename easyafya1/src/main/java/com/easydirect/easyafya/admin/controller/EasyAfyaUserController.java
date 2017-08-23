@@ -31,18 +31,24 @@ public class EasyAfyaUserController {
 	@Autowired
 	private EasyAfyaUserRepo easyAfyaUserRepo;
 	
+	@RequestMapping("")
+	public String index(){
+		return "admin/index";
+	}
+	
 	@GetMapping(path="/users")
 	public String adduser(Model model){
 		
 		model.addAttribute("users", new EasyAfyaUsers());
-		LOGGER.info("return form");
+		//LOGGER.info("return form");
 		return "admin/users";
 	}
 	
 	@PostMapping("/users")	
-	public @ResponseBody String saveUser(@ModelAttribute  EasyAfyaUsers easyAfyaUsers){
+	//@ResponseBody
+	public  String saveUser(@ModelAttribute  EasyAfyaUsers easyAfyaUsers){
 		
-		//easyAfyaUsers.setFisrtName(fisrtName);
-		return "Ok";
+		easyAfyaUserRepo.save(easyAfyaUsers);
+		return "redirect:/users";
 	}
 }

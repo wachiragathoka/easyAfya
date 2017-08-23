@@ -37,6 +37,7 @@ public class EasyAfyaCategory {
 	private String description;
 	
 	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "DATECREATED_TIMESTAMP", columnDefinition="TIMESTAMP")
 	private Date dateCreated;
 	
 	@ManyToOne

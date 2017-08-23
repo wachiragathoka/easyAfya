@@ -44,7 +44,7 @@ public class EasyAfyaUsers {
 	private String userName;
 		
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "DATECREATED_TIMESTAMP")
+	@Column(name = "DATECREATED_TIMESTAMP", columnDefinition="TIMESTAMP")
 	private Date dateCreated;
 		
 	@OneToMany(mappedBy="easyAfyaUsers")
