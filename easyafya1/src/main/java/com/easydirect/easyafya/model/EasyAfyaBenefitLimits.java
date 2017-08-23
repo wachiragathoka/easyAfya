@@ -32,13 +32,13 @@ public class EasyAfyaBenefitLimits {
 	private EasyAfyaCategory easyafya_category_id;
 	
 	@ManyToOne
-	private EasyAfyaBenefitsCategories easyafya_benefit_category_id;
+	private EasyAfyaBenefitsCategory easyafya_benefit_category_id;
 	
 	@ManyToOne
 	private EasyAfyaAgeBrackets easyafya_age_bracket_id;
 	
 	@ManyToOne
-	private EasyAfyaMembersCategories easyafya_member_category_id;
+	private EasyAfyaMembersCategory easyafya_member_category_id;
 		
 	@Column(precision=10, scale=2) 
 	private Double easyafya_benefit_limit_amount;

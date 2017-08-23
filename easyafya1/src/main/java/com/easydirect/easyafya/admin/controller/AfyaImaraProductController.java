@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.easydirect.easyafya.model.EasyAfyaCategory;
-import com.easydirect.easyafya.repo.interfaces.EasyAfyaCategoryRepo;
+import com.easydirect.easyafya.repo.EasyAfyaCategoryRepo;
 
 /**
  * @author MGathoka

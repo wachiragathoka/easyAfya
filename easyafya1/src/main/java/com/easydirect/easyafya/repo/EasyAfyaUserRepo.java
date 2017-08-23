@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.easydirect.easyafya.repo.interfaces;
+package com.easydirect.easyafya.repo;
 
 import org.springframework.data.repository.CrudRepository;
 

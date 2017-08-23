@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.easydirect.easyafya.repo.InterfaceImpl;
+package com.easydirect.easyafya.repoImpl;
 
 import java.util.List;
 
@@ -16,7 +16,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 
 import com.easydirect.easyafya.model.EasyAfyaUsers;
-import com.easydirect.easyafya.repo.interfaces.EasyAfyaUserRepo;
+import com.easydirect.easyafya.repo.EasyAfyaUserRepo;
 
 /**
  * @author MGathoka
