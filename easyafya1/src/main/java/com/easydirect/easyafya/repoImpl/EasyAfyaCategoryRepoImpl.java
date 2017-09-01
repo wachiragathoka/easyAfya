@@ -3,7 +3,13 @@
  */
 package com.easydirect.easyafya.repoImpl;
 
+import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
+
+import org.mockito.internal.util.collections.Iterables;
 
 import com.easydirect.easyafya.model.EasyAfyaCategory;
 import com.easydirect.easyafya.repo.EasyAfyaCategoryRepo;
@@ -15,6 +21,9 @@ import com.easydirect.easyafya.repo.EasyAfyaCategoryRepo;
 
 @Transactional
 public class EasyAfyaCategoryRepoImpl implements EasyAfyaCategoryRepo{
+	
+	@PersistenceContext
+	 private EntityManager em;
 
 	@Override
 	public <S extends EasyAfyaCategory> S save(S entity) {
@@ -45,7 +54,7 @@ public class EasyAfyaCategoryRepoImpl implements EasyAfyaCategoryRepo{
 		// TODO Auto-generated method stub
 		return null;
 	}
-
+	
 	@Override
 	public Iterable<EasyAfyaCategory> findAll(Iterable<Long> ids) {
 		// TODO Auto-generated method stub

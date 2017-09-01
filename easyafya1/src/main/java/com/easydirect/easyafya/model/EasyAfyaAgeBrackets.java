@@ -20,7 +20,7 @@ import javax.persistence.TemporalType;
  *
  */
 
-@ Entity
+@Entity
 @Table(name="easyafya_age_brackets")
 public class EasyAfyaAgeBrackets {
 	

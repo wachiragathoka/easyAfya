@@ -3,6 +3,9 @@
  */
 package com.easydirect.easyafya.repoImpl;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
 import com.easydirect.easyafya.model.EasyAfyaBenefitsCategory;
 import com.easydirect.easyafya.repo.EasyAfyaBenefitsCategoryRepo;
 
@@ -11,6 +14,9 @@ import com.easydirect.easyafya.repo.EasyAfyaBenefitsCategoryRepo;
  *
  */
 public class EasyAfyaBenefitsCategoryRepoImpl implements EasyAfyaBenefitsCategoryRepo {
+	
+	@PersistenceContext
+	 private EntityManager em;
 
 	/* (non-Javadoc)
 	 * @see org.springframework.data.repository.CrudRepository#save(java.lang.Object)

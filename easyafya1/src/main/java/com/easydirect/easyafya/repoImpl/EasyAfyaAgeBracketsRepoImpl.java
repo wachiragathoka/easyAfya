@@ -3,7 +3,11 @@
  */
 package com.easydirect.easyafya.repoImpl;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
+
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.easydirect.easyafya.model.EasyAfyaAgeBrackets;
 import com.easydirect.easyafya.repo.EasyAfyaAgeBracketsRepo;
@@ -16,6 +20,12 @@ import com.easydirect.easyafya.repo.EasyAfyaAgeBracketsRepo;
 @Transactional
 public class EasyAfyaAgeBracketsRepoImpl implements EasyAfyaAgeBracketsRepo{
 
+	 @PersistenceContext
+	 private EntityManager em;
+	 
+	 @Autowired
+	 private EasyAfyaAgeBracketsRepo easyAfyaAgeBracketsRepo;
+	 
 	@Override
 	public <S extends EasyAfyaAgeBrackets> S save(S entity) {
 		// TODO Auto-generated method stub

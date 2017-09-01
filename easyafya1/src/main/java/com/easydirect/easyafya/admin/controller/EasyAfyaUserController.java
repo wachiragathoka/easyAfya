@@ -3,6 +3,7 @@
  */
 package com.easydirect.easyafya.admin.controller;
 
+import java.util.List;
 import java.util.logging.Logger;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,12 +17,15 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.easydirect.easyafya.model.EasyAfyaAgeBrackets;
 import com.easydirect.easyafya.model.EasyAfyaBenefitsCategory;
+import com.easydirect.easyafya.model.EasyAfyaCategory;
 import com.easydirect.easyafya.model.EasyAfyaMembersCategory;
 import com.easydirect.easyafya.model.EasyAfyaUsers;
 import com.easydirect.easyafya.repo.EasyAfyaAgeBracketsRepo;
 import com.easydirect.easyafya.repo.EasyAfyaBenefitsCategoryRepo;
+import com.easydirect.easyafya.repo.EasyAfyaCategoryRepo;
 import com.easydirect.easyafya.repo.EasyAfyaMembersCategoryRepo;
 import com.easydirect.easyafya.repo.EasyAfyaUserRepo;
+import com.easydirect.easyafya.repoImpl.EasyAfyaCategoryRepoImpl;
 
 /**
  * @author MGathoka
@@ -38,13 +42,16 @@ public class EasyAfyaUserController {
 	private EasyAfyaUserRepo easyAfyaUserRepo;
 	
 	@Autowired
-	private EasyAfyaAgeBracketsRepo AgeBracket;
+	private EasyAfyaAgeBracketsRepo easyAfyaAgeBracketsRepo;
 	
 	@Autowired
-	private EasyAfyaMembersCategoryRepo afyaMemberCategory;
+	private EasyAfyaMembersCategoryRepo easyAfyaMembersCategoryRepo;
 	
 	@Autowired
-	private EasyAfyaBenefitsCategoryRepo afyaBenefitsCategoryRepo;
+	private EasyAfyaBenefitsCategoryRepo easyAfyaBenefitsCategoryRepo;
+	
+	
+	private EasyAfyaCategoryRepoImpl esyAfyaCategoryRepoImpl;
 	
 	@RequestMapping("")
 	public String index(){
@@ -69,6 +76,7 @@ public class EasyAfyaUserController {
 	
 	@GetMapping(path="/agebrackets")
 	public String addAgeBrackets(Model model){
+		List<EasyAfyaCategory> easyAfyaCategories = (List<EasyAfyaCategory>) esyAfyaCategoryRepoImpl.findAll();
 		model.addAttribute("agebracket", new EasyAfyaAgeBrackets());
 		return "admin/agebrackets";
 	}
@@ -76,7 +84,7 @@ public class EasyAfyaUserController {
 	@PostMapping(path="/agebrackets")
 	public String addAgeBrackets(@ModelAttribute EasyAfyaAgeBrackets easyAfyaAgeBrackets){
 		
-		AgeBracket.save(easyAfyaAgeBrackets);
+		easyAfyaAgeBracketsRepo.save(easyAfyaAgeBrackets);
 		return"redirect:/agebrackets";
 	}
 	
@@ -89,7 +97,7 @@ public class EasyAfyaUserController {
 	@PostMapping(path="memberscategory")
 	public String memberscategory(@ModelAttribute EasyAfyaMembersCategory afyaMembersCategory){
 		
-		afyaMemberCategory.save(afyaMembersCategory);
+		easyAfyaMembersCategoryRepo.save(afyaMembersCategory);
 		return "redirect:/memberscategory";
 	}
 	
@@ -101,7 +109,7 @@ public class EasyAfyaUserController {
 	
 	@PostMapping(path="/benefitcategory")
 	public String benefitsCategory(@ModelAttribute EasyAfyaBenefitsCategory easyAfyaBenefitsCategory){
-		afyaBenefitsCategoryRepo.save(easyAfyaBenefitsCategory);
+		easyAfyaBenefitsCategoryRepo.save(easyAfyaBenefitsCategory);
 		return "redirect:/benefitcategory";
 	}
 }
