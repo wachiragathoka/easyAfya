@@ -3,29 +3,27 @@
  */
 package com.easydirect.easyafya.admin.controller;
 
-import java.util.List;
 import java.util.logging.Logger;
+
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.easydirect.easyafya.model.EasyAfyaAgeBrackets;
 import com.easydirect.easyafya.model.EasyAfyaBenefitsCategory;
-import com.easydirect.easyafya.model.EasyAfyaCategory;
 import com.easydirect.easyafya.model.EasyAfyaMembersCategory;
 import com.easydirect.easyafya.model.EasyAfyaUsers;
 import com.easydirect.easyafya.service.EasyAfyaAgeBracketsService;
 import com.easydirect.easyafya.service.EasyAfyaBenefitsCategoryService;
-import com.easydirect.easyafya.service.EasyAfyaCategoryService;
 import com.easydirect.easyafya.service.EasyAfyaMembersCategoryService;
 import com.easydirect.easyafya.service.EasyAfyaUserService;
-import com.easydirect.easyafya.service.Impl.EasyAfyaCategoryServiceImpl;
 
 /**
  * @author MGathoka
@@ -43,7 +41,7 @@ public class EasyAfyaUserController {
 	private EasyAfyaAgeBracketsService easyAfyaAgeBracketsService;	
 	private EasyAfyaMembersCategoryService easyAfyaMembersCategoryService;	
 	private EasyAfyaBenefitsCategoryService easyAfyaBenefitsCategoryService;	
-	private EasyAfyaCategoryService esyAfyaCategoryService;
+	//private EasyAfyaCategoryService esyAfyaCategoryService;
 	
 	@RequestMapping("")
 	public String index(){
@@ -54,20 +52,30 @@ public class EasyAfyaUserController {
 	public String adduser(Model model){
 		
 		model.addAttribute("users", new EasyAfyaUsers());
-		//LOGGER.info("return form");
+		model.addAttribute("usersList", easyAfyaUserService.findAll());
 		return "admin/users";
 	}
 	
 	
 	@PostMapping("/users")	
-	public  String saveUser(@ModelAttribute  EasyAfyaUsers easyAfyaUsers){
+	public  String saveUser(@Valid  EasyAfyaUsers easyAfyaUser, BindingResult bindingResult, Model model){
+		if (bindingResult.hasErrors()) {
+			
+			LOGGER.info("Error");
+			
+			return "admin/index";
+		}
 		
-		easyAfyaUserService.save(easyAfyaUsers);
+				
+		easyAfyaUserService.save(new EasyAfyaUsers(easyAfyaUser.getFisrtName(), 
+				easyAfyaUser.getSecondName(), 
+				easyAfyaUser.getLastName(),
+				easyAfyaUser.getUserName()));
 		
 		//Retrieve the current list
-		//model.addAttribute("usersList", easyAfyaUserService.findAll());
-		return "redirect:/users/users";
-		//return "admin/users/users";
+		model.addAttribute("usersList", easyAfyaUserService.findAll());
+		return "redirect:users";
+		//return "redirect:users";
 	}	
 	
 	
@@ -95,7 +103,7 @@ public class EasyAfyaUserController {
 	public String memberscategory(@ModelAttribute EasyAfyaMembersCategory afyaMembersCategory){
 		
 		easyAfyaMembersCategoryService.save(afyaMembersCategory);
-		return "redirect:/memberscategory";
+		return "redirect:admin/memberscategory";
 	}
 	
 	@GetMapping(path="/benefitcategory")
@@ -107,6 +115,6 @@ public class EasyAfyaUserController {
 	@PostMapping(path="/benefitcategory")
 	public String benefitsCategory(@ModelAttribute EasyAfyaBenefitsCategory easyAfyaBenefitsCategory){
 		easyAfyaBenefitsCategoryService.save(easyAfyaBenefitsCategory);
-		return "redirect:/benefitcategory";
+		return "redirect:admin/benefitcategory";
 	}
 }

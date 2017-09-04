@@ -25,6 +25,18 @@ import javax.persistence.TemporalType;
 @Entity
 @Table(name="easyafya_users")
 public class EasyAfyaUsers {	
+	
+	
+	public EasyAfyaUsers() {
+		
+	}
+	
+	public EasyAfyaUsers(String firstname, String sname, String lname, String ldapname){
+		this.fisrtName=firstname;
+		this.secondName=sname;
+		this.lastName=lname;
+		this.userName=ldapname;
+	}
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)	
@@ -46,8 +58,8 @@ public class EasyAfyaUsers {
 	@Column(name = "DATECREATED_TIMESTAMP", columnDefinition="TIMESTAMP")
 	private Date dateCreated;
 		
-	@OneToMany(mappedBy="easyAfyaUsers")
-	private Set<EasyAfyaCategory> user = new HashSet<EasyAfyaCategory>();
+	//@OneToMany(mappedBy="easyAfyaUsers")
+	//private Set<EasyAfyaCategory> user = new HashSet<EasyAfyaCategory>();
 	
 	
 	/**
@@ -130,16 +142,16 @@ public class EasyAfyaUsers {
 	/**
 	 * @return the persons
 	 */
-	public Set<EasyAfyaCategory> getPersons() {
-		return user;
-	}
+	//public Set<EasyAfyaCategory> getPersons() {
+	//	return user;
+	//}
 
 	/**
 	 * @param persons the persons to set
 	 */
-	public void setPersons(Set<EasyAfyaCategory> persons) {
-		this.user = persons;
-	}
+	//public void setPersons(Set<EasyAfyaCategory> persons) {
+	//	this.user = persons;
+	//}
 
 	/**
 	 * @param easyafya_user_id the easyafya_user_id to set
