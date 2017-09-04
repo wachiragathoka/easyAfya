@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.easydirect.easyafya.repo;
+package com.easydirect.easyafya.service;
 
 import org.springframework.data.repository.CrudRepository;
 
@@ -11,6 +11,6 @@ import com.easydirect.easyafya.model.EasyAfyaMembersCategory;
  * @author MGathoka
  *
  */
-public interface EasyAfyaMembersCategoryRepo extends CrudRepository<EasyAfyaMembersCategory, Long>{
+public interface EasyAfyaMembersCategoryService extends CrudRepository<EasyAfyaMembersCategory, Long>{
 
 }

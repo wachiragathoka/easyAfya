@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.easydirect.easyafya.repoImpl;
+package com.easydirect.easyafya.service.Impl;
 
 import java.util.List;
 
@@ -16,7 +16,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 
 import com.easydirect.easyafya.model.EasyAfyaUsers;
-import com.easydirect.easyafya.repo.EasyAfyaUserRepo;
+import com.easydirect.easyafya.service.EasyAfyaUserService;
 
 /**
  * @author MGathoka
@@ -24,13 +24,13 @@ import com.easydirect.easyafya.repo.EasyAfyaUserRepo;
  */
 
 @Transactional
-public class EasyAfyaUsersRepoImpl  implements EasyAfyaUserRepo{
+public class EasyAfyaUsersServiceImpl  implements EasyAfyaUserService{
 
 	  @PersistenceContext
 	  private EntityManager em;
 	  
 	 @Autowired
-	 private EasyAfyaUserRepo easyafyaUsersRepo;
+	 private EasyAfyaUserService easyafyaUsersRepo;
 	  
 	 
 	@Override

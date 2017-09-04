@@ -1,18 +1,14 @@
 /**
  * 
  */
-package com.easydirect.easyafya.repoImpl;
-
-import java.util.List;
+package com.easydirect.easyafya.service.Impl;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
-import org.mockito.internal.util.collections.Iterables;
-
 import com.easydirect.easyafya.model.EasyAfyaCategory;
-import com.easydirect.easyafya.repo.EasyAfyaCategoryRepo;
+import com.easydirect.easyafya.service.EasyAfyaCategoryService;
 
 /**
  * @author MGathoka
@@ -20,7 +16,7 @@ import com.easydirect.easyafya.repo.EasyAfyaCategoryRepo;
  */
 
 @Transactional
-public class EasyAfyaCategoryRepoImpl implements EasyAfyaCategoryRepo{
+public class EasyAfyaCategoryServiceImpl implements EasyAfyaCategoryService{
 	
 	@PersistenceContext
 	 private EntityManager em;

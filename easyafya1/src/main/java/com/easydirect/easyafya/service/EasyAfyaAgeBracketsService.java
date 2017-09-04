@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.easydirect.easyafya.repo;
+package com.easydirect.easyafya.service;
 
 import org.springframework.data.repository.CrudRepository;
 
@@ -11,6 +11,6 @@ import com.easydirect.easyafya.model.EasyAfyaAgeBrackets;
  * @author MGathoka
  *
  */
-public interface EasyAfyaAgeBracketsRepo extends CrudRepository<EasyAfyaAgeBrackets, Long>{
+public interface EasyAfyaAgeBracketsService extends CrudRepository<EasyAfyaAgeBrackets, Long>{
 
 }

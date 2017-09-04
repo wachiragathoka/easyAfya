@@ -20,12 +20,12 @@ import com.easydirect.easyafya.model.EasyAfyaBenefitsCategory;
 import com.easydirect.easyafya.model.EasyAfyaCategory;
 import com.easydirect.easyafya.model.EasyAfyaMembersCategory;
 import com.easydirect.easyafya.model.EasyAfyaUsers;
-import com.easydirect.easyafya.repo.EasyAfyaAgeBracketsRepo;
-import com.easydirect.easyafya.repo.EasyAfyaBenefitsCategoryRepo;
-import com.easydirect.easyafya.repo.EasyAfyaCategoryRepo;
-import com.easydirect.easyafya.repo.EasyAfyaMembersCategoryRepo;
-import com.easydirect.easyafya.repo.EasyAfyaUserRepo;
-import com.easydirect.easyafya.repoImpl.EasyAfyaCategoryRepoImpl;
+import com.easydirect.easyafya.service.EasyAfyaAgeBracketsService;
+import com.easydirect.easyafya.service.EasyAfyaBenefitsCategoryService;
+import com.easydirect.easyafya.service.EasyAfyaCategoryService;
+import com.easydirect.easyafya.service.EasyAfyaMembersCategoryService;
+import com.easydirect.easyafya.service.EasyAfyaUserService;
+import com.easydirect.easyafya.service.Impl.EasyAfyaCategoryServiceImpl;
 
 /**
  * @author MGathoka
@@ -39,19 +39,11 @@ public class EasyAfyaUserController {
 	private final static Logger LOGGER = Logger.getLogger(EasyAfyaUserController.class.getName());
 	
 	@Autowired
-	private EasyAfyaUserRepo easyAfyaUserRepo;
-	
-	@Autowired
-	private EasyAfyaAgeBracketsRepo easyAfyaAgeBracketsRepo;
-	
-	@Autowired
-	private EasyAfyaMembersCategoryRepo easyAfyaMembersCategoryRepo;
-	
-	@Autowired
-	private EasyAfyaBenefitsCategoryRepo easyAfyaBenefitsCategoryRepo;
-	
-	
-	private EasyAfyaCategoryRepoImpl esyAfyaCategoryRepoImpl;
+	private EasyAfyaUserService easyAfyaUserService;	
+	private EasyAfyaAgeBracketsService easyAfyaAgeBracketsService;	
+	private EasyAfyaMembersCategoryService easyAfyaMembersCategoryService;	
+	private EasyAfyaBenefitsCategoryService easyAfyaBenefitsCategoryService;	
+	private EasyAfyaCategoryService esyAfyaCategoryService;
 	
 	@RequestMapping("")
 	public String index(){
@@ -66,17 +58,22 @@ public class EasyAfyaUserController {
 		return "admin/users";
 	}
 	
+	
 	@PostMapping("/users")	
-	//@ResponseBody
-	public  String saveUser(@ModelAttribute  EasyAfyaUsers easyAfyaUsers){
+	public  String saveUser(Model model, @ModelAttribute  EasyAfyaUsers easyAfyaUsers){
 		
-		easyAfyaUserRepo.save(easyAfyaUsers);
+		easyAfyaUserService.save(easyAfyaUsers);
+		
+		//Retrieve the current list
+		model.addAttribute("usersList", easyAfyaUserService.findAll());
 		return "redirect:/users";
-	}
+		//return "admin/users/users";
+	}	
+	
 	
 	@GetMapping(path="/agebrackets")
 	public String addAgeBrackets(Model model){
-		List<EasyAfyaCategory> easyAfyaCategories = (List<EasyAfyaCategory>) esyAfyaCategoryRepoImpl.findAll();
+		//List<EasyAfyaCategory> easyAfyaCategories = (List<EasyAfyaCategory>) esyAfyaCategoryService.findAll();
 		model.addAttribute("agebracket", new EasyAfyaAgeBrackets());
 		return "admin/agebrackets";
 	}
@@ -84,7 +81,7 @@ public class EasyAfyaUserController {
 	@PostMapping(path="/agebrackets")
 	public String addAgeBrackets(@ModelAttribute EasyAfyaAgeBrackets easyAfyaAgeBrackets){
 		
-		easyAfyaAgeBracketsRepo.save(easyAfyaAgeBrackets);
+		easyAfyaAgeBracketsService.save(easyAfyaAgeBrackets);
 		return"redirect:/agebrackets";
 	}
 	
@@ -97,7 +94,7 @@ public class EasyAfyaUserController {
 	@PostMapping(path="memberscategory")
 	public String memberscategory(@ModelAttribute EasyAfyaMembersCategory afyaMembersCategory){
 		
-		easyAfyaMembersCategoryRepo.save(afyaMembersCategory);
+		easyAfyaMembersCategoryService.save(afyaMembersCategory);
 		return "redirect:/memberscategory";
 	}
 	
@@ -109,7 +106,7 @@ public class EasyAfyaUserController {
 	
 	@PostMapping(path="/benefitcategory")
 	public String benefitsCategory(@ModelAttribute EasyAfyaBenefitsCategory easyAfyaBenefitsCategory){
-		easyAfyaBenefitsCategoryRepo.save(easyAfyaBenefitsCategory);
+		easyAfyaBenefitsCategoryService.save(easyAfyaBenefitsCategory);
 		return "redirect:/benefitcategory";
 	}
 }

@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.easydirect.easyafya.model.EasyAfyaCategory;
-import com.easydirect.easyafya.repo.EasyAfyaCategoryRepo;
+import com.easydirect.easyafya.service.EasyAfyaCategoryService;
 
 /**
  * @author MGathoka
@@ -23,12 +23,12 @@ import com.easydirect.easyafya.repo.EasyAfyaCategoryRepo;
 
 @Controller
 @RequestMapping(path="/easyaAfya")
-public class AfyaImaraProductController {
+public class EasyAfyaProductsController {
 
 	private final static Logger LOGGER = Logger.getLogger(EasyAfyaUserController.class.getName());
 	
 	@Autowired
-	private EasyAfyaCategoryRepo easyAfyaCategoryRepo;
+	private EasyAfyaCategoryService easyAfyaCategoryService;
 	
 	@RequestMapping("")
 	public String index() {
@@ -49,7 +49,7 @@ public class AfyaImaraProductController {
 	
 	@PostMapping(path="/category")
 	public String saveEasyAfyaCategory(@ModelAttribute EasyAfyaCategory easyAfyaCategory){
-		easyAfyaCategoryRepo.save(easyAfyaCategory);
+		easyAfyaCategoryService.save(easyAfyaCategory);
 		return "redirect:easyafya_cat";
 	}
 }

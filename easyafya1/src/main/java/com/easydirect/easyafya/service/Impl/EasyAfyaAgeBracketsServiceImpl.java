@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.easydirect.easyafya.repoImpl;
+package com.easydirect.easyafya.service.Impl;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -10,7 +10,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.easydirect.easyafya.model.EasyAfyaAgeBrackets;
-import com.easydirect.easyafya.repo.EasyAfyaAgeBracketsRepo;
+import com.easydirect.easyafya.service.EasyAfyaAgeBracketsService;
 
 /**
  * @author MGathoka
@@ -18,13 +18,13 @@ import com.easydirect.easyafya.repo.EasyAfyaAgeBracketsRepo;
  */
 
 @Transactional
-public class EasyAfyaAgeBracketsRepoImpl implements EasyAfyaAgeBracketsRepo{
+public class EasyAfyaAgeBracketsServiceImpl implements EasyAfyaAgeBracketsService{
 
 	 @PersistenceContext
 	 private EntityManager em;
 	 
 	 @Autowired
-	 private EasyAfyaAgeBracketsRepo easyAfyaAgeBracketsRepo;
+	 private EasyAfyaAgeBracketsService easyAfyaAgeBracketsRepo;
 	 
 	@Override
 	public <S extends EasyAfyaAgeBrackets> S save(S entity) {

@@ -1,19 +1,19 @@
 /**
  * 
  */
-package com.easydirect.easyafya.repoImpl;
+package com.easydirect.easyafya.service.Impl;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import com.easydirect.easyafya.model.EasyAfyaMembersCategory;
-import com.easydirect.easyafya.repo.EasyAfyaMembersCategoryRepo;
+import com.easydirect.easyafya.service.EasyAfyaMembersCategoryService;
 
 /**
  * @author MGathoka
  *
  */
-public class EasyAfyaMembersCategoryRepoImpl implements EasyAfyaMembersCategoryRepo {
+public class EasyAfyaMembersCategoryServiceImpl implements EasyAfyaMembersCategoryService {
 	
 	@PersistenceContext
 	 private EntityManager em;
