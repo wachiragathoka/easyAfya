@@ -12,7 +12,5 @@ import com.easydirect.easyafya.model.EasyAfyaUsers;
  *
  */
 public interface EasyAfyaUserService extends CrudRepository<EasyAfyaUsers, Long>{
-
-
-
+	//List<EasyAfyaUsers> fin
 }

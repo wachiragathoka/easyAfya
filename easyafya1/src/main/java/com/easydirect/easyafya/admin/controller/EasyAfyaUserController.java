@@ -60,13 +60,13 @@ public class EasyAfyaUserController {
 	
 	
 	@PostMapping("/users")	
-	public  String saveUser(Model model, @ModelAttribute  EasyAfyaUsers easyAfyaUsers){
+	public  String saveUser(@ModelAttribute  EasyAfyaUsers easyAfyaUsers){
 		
 		easyAfyaUserService.save(easyAfyaUsers);
 		
 		//Retrieve the current list
-		model.addAttribute("usersList", easyAfyaUserService.findAll());
-		return "redirect:/users";
+		//model.addAttribute("usersList", easyAfyaUserService.findAll());
+		return "redirect:/users/users";
 		//return "admin/users/users";
 	}	
 	
