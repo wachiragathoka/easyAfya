@@ -28,8 +28,8 @@ public class EasyAfyaAgeBrackets {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long easyafya_age_bracket_id;
 	
-	@ManyToOne
-	private EasyAfyaCategory easyafya_category_id;
+	@Column(name="easyafya_category_id")
+	private int easyafya_category_id;
 	
 	@Column(name="lower_limit")
 	private int categoryAgeLowerLimit;
@@ -41,11 +41,21 @@ public class EasyAfyaAgeBrackets {
 	@Column(name="date_created", columnDefinition="TIMESTAMP")
 	private Date dateCreated;
 	
-	@ManyToOne
-	private EasyAfyaUsers easyafya_user_id;
+	//@ManyToOne
+	//private EasyAfyaUsers easyafya_user_id;
+
+	public EasyAfyaAgeBrackets(int easyafya_category_id2, int categoryAgeLowerLimit2, int categoryAgeUpperLimit2) {
+		this.easyafya_category_id=easyafya_category_id2;
+		this.categoryAgeLowerLimit=categoryAgeLowerLimit2;
+		this.categoryAgeUpperLimit=categoryAgeUpperLimit2;
+	}
 
 	
+	public EasyAfyaAgeBrackets(){
+		
+	}
 	
+
 	/**
 	 * @return the easyafya_age_bracket_id
 	 */
@@ -63,14 +73,14 @@ public class EasyAfyaAgeBrackets {
 	/**
 	 * @return the easyafya_category_id
 	 */
-	public EasyAfyaCategory getEasyafya_category_id() {
+	public int getEasyafya_category_id() {
 		return easyafya_category_id;
 	}
 
 	/**
 	 * @param easyafya_category_id the easyafya_category_id to set
 	 */
-	public void setEasyafya_category_id(EasyAfyaCategory easyafya_category_id) {
+	public void setEasyafya_category_id(int easyafya_category_id) {
 		this.easyafya_category_id = easyafya_category_id;
 	}
 
@@ -114,19 +124,5 @@ public class EasyAfyaAgeBrackets {
 	 */
 	public void setDateCreated(Date dateCreated) {
 		this.dateCreated = dateCreated;
-	}
-
-	/**
-	 * @return the easyafya_user_id
-	 */
-	public EasyAfyaUsers getEasyafya_user_id() {
-		return easyafya_user_id;
-	}
-
-	/**
-	 * @param easyafya_user_id the easyafya_user_id to set
-	 */
-	public void setEasyafya_user_id(EasyAfyaUsers easyafya_user_id) {
-		this.easyafya_user_id = easyafya_user_id;
 	}
 }

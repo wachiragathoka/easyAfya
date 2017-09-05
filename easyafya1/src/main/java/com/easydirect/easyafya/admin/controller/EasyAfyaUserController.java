@@ -38,9 +38,7 @@ public class EasyAfyaUserController {
 	
 	@Autowired
 	private EasyAfyaUserService easyAfyaUserService;	
-	private EasyAfyaAgeBracketsService easyAfyaAgeBracketsService;	
-	private EasyAfyaMembersCategoryService easyAfyaMembersCategoryService;	
-	private EasyAfyaBenefitsCategoryService easyAfyaBenefitsCategoryService;	
+
 	//private EasyAfyaCategoryService esyAfyaCategoryService;
 	
 	@RequestMapping("")
@@ -67,54 +65,16 @@ public class EasyAfyaUserController {
 		}
 		
 				
-		easyAfyaUserService.save(new EasyAfyaUsers(easyAfyaUser.getFisrtName(), 
+		easyAfyaUserService.save(new EasyAfyaUsers(easyAfyaUser.getFisrtName(),
 				easyAfyaUser.getSecondName(), 
 				easyAfyaUser.getLastName(),
 				easyAfyaUser.getUserName()));
 		
 		//Retrieve the current list
-		model.addAttribute("usersList", easyAfyaUserService.findAll());
+		//model.addAttribute("usersList", easyAfyaUserService.findAll());
 		return "redirect:users";
-		//return "redirect:users";
 	}	
 	
 	
-	@GetMapping(path="/agebrackets")
-	public String addAgeBrackets(Model model){
-		//List<EasyAfyaCategory> easyAfyaCategories = (List<EasyAfyaCategory>) esyAfyaCategoryService.findAll();
-		model.addAttribute("agebracket", new EasyAfyaAgeBrackets());
-		return "admin/agebrackets";
-	}
 	
-	@PostMapping(path="/agebrackets")
-	public String addAgeBrackets(@ModelAttribute EasyAfyaAgeBrackets easyAfyaAgeBrackets){
-		
-		easyAfyaAgeBracketsService.save(easyAfyaAgeBrackets);
-		return"redirect:/agebrackets";
-	}
-	
-	@GetMapping(path="/memberscategory")
-	public String membesCategory(Model model){
-		model.addAttribute("memberscategory", new EasyAfyaMembersCategory());
-		return "admin/memberscategory";
-	}
-	
-	@PostMapping(path="memberscategory")
-	public String memberscategory(@ModelAttribute EasyAfyaMembersCategory afyaMembersCategory){
-		
-		easyAfyaMembersCategoryService.save(afyaMembersCategory);
-		return "redirect:admin/memberscategory";
-	}
-	
-	@GetMapping(path="/benefitcategory")
-	public String benefitsCategory(Model model){
-		model.addAttribute("benefitcategory", new EasyAfyaBenefitsCategory());
-		return "admin/benefitcategory";
-	}
-	
-	@PostMapping(path="/benefitcategory")
-	public String benefitsCategory(@ModelAttribute EasyAfyaBenefitsCategory easyAfyaBenefitsCategory){
-		easyAfyaBenefitsCategoryService.save(easyAfyaBenefitsCategory);
-		return "redirect:admin/benefitcategory";
-	}
 }

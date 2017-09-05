@@ -5,12 +5,42 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-<h1>Age Brackets</h1>
-    <form action="#" th:action="@{/users}" th:object="${agebracket}" method="post">
-    	<!-- <p class="field_input">Id: <input type="text" th:field="*{id}" /></p> -->
-        <p class="field_input">Description: <input type="text" th:field="*{description}" /></p>
-               
-        <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+<h3>Age Brackets</h3>
+    <form action="#" th:action="@{/easyaAfya/agebrackets}" th:object="${agebracket}" method="post">
+    	
+    	<div>
+    		<select name=afyaImaraCategory>
+    			<option></option>
+    		</select>
+    	</div>
+    	
+    	<div>
+    		<label>Lower age limit</label> <input class="" type="number" th:field="{}" />
+    	</div>
+    	
+    	<div>
+    		<label>Upper age limit</label> <input class="" type="number" th:field="{}" />
+    	</div>
+           
+        <div><input class="btn btn-success" type="submit" value="Submit" /> <input class="btn btn-warning" type="reset" value="Reset" /></div>
     </form>
+    
+    <p>&nbsp;</p>
+    <table class="OM-table">
+    	<tr>
+    		<th>id</th>
+    		<th>AfyaImara Category</th>
+    		<th>Lower Age limit</th>
+    		<th>Upper Age limit</th>
+    		<th>&nbsp;</th>
+    	</tr>
+    	
+    	<tr th:each="agebracket : ${agebracketList}">
+    		<th th:text="${agebracket.easyafya_category_id}"></th>
+    		<td th:text="${agebracket.categoryName}"></td>
+    		<td th:text="${agebracket.description}"></td>
+    		<td><button  type="button" class="btn btn-primary">Modify</button> | <button  type="button" class="btn btn-danger">Delete</button></td>
+    	</tr>
+    </table>    
 </body>
 </html>

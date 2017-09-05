@@ -28,10 +28,23 @@ import javax.persistence.TemporalType;
 @Table(name="easyafya_categories")
 public class EasyAfyaCategory {
 
+	public EasyAfyaCategory() {
+		
+	}
+	
+	public EasyAfyaCategory(String paramcategoryName, String paramDescription){
+		this.categoryName=paramcategoryName;
+		this.description=paramDescription;
+		//this.dateCreated
+	}
+	
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long easyafya_category_id;
 	
+	@Column(name="category_name")
+	private String categoryName;
 	
 	@Column(name="description" )
 	private String description;
@@ -40,8 +53,27 @@ public class EasyAfyaCategory {
 	@Column(name = "DATECREATED_TIMESTAMP", columnDefinition="TIMESTAMP")
 	private Date dateCreated;
 	
-	@ManyToOne
-	private EasyAfyaUsers easyAfyaUsers;
+	
+	/**
+	 * @return the categoryName
+	 */
+	public String getCategoryName() {
+		return categoryName;
+	}
+
+	/**
+	 * @param categoryName the categoryName to set
+	 */
+	public void setCategoryName(String categoryName) {
+		this.categoryName = categoryName;
+	}
+
+	/**
+	 * @param easyafya_category_id the easyafya_category_id to set
+	 */
+	public void setEasyafya_category_id(long easyafya_category_id) {
+		this.easyafya_category_id = easyafya_category_id;
+	}
 
 	/**
 	 * @return the easyafya_category_id
@@ -50,12 +82,6 @@ public class EasyAfyaCategory {
 		return easyafya_category_id;
 	}
 
-	/**
-	 * @param easyafya_category_id the easyafya_category_id to set
-	 */
-	public void setEasyafya_category_id(Long easyafya_category_id) {
-		this.easyafya_category_id = easyafya_category_id;
-	}
 
 	/**
 	 * @return the description
@@ -85,17 +111,4 @@ public class EasyAfyaCategory {
 		this.dateCreated = dateCreated;
 	}
 
-	/**
-	 * @return the easyAfyaUsers
-	 */
-	public EasyAfyaUsers getEasyAfyaUsers() {
-		return easyAfyaUsers;
-	}
-
-	/**
-	 * @param easyAfyaUsers the easyAfyaUsers to set
-	 */
-	public void setEasyAfyaUsers(EasyAfyaUsers easyAfyaUsers) {
-		this.easyAfyaUsers = easyAfyaUsers;
-	}
 }
