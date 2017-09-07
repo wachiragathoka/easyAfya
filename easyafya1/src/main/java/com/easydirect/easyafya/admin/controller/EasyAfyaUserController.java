@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.easydirect.easyafya.model.EasyAfyaAgeBrackets;
 import com.easydirect.easyafya.model.EasyAfyaBenefitsCategory;
 import com.easydirect.easyafya.model.EasyAfyaMembersCategory;
-import com.easydirect.easyafya.model.EasyAfyaUsers;
+import com.easydirect.easyafya.model.EasyAfyaUser;
 import com.easydirect.easyafya.service.EasyAfyaAgeBracketsService;
 import com.easydirect.easyafya.service.EasyAfyaBenefitsCategoryService;
 import com.easydirect.easyafya.service.EasyAfyaMembersCategoryService;
@@ -39,7 +39,7 @@ public class EasyAfyaUserController {
 	@Autowired
 	private EasyAfyaUserService easyAfyaUserService;	
 
-	//private EasyAfyaCategoryService esyAfyaCategoryService;
+	
 	
 	@RequestMapping("")
 	public String index(){
@@ -49,14 +49,14 @@ public class EasyAfyaUserController {
 	@GetMapping(path="/users")
 	public String adduser(Model model){
 		
-		model.addAttribute("users", new EasyAfyaUsers());
+		model.addAttribute("users", new EasyAfyaUser());
 		model.addAttribute("usersList", easyAfyaUserService.findAll());
 		return "admin/users";
 	}
 	
 	
 	@PostMapping("/users")	
-	public  String saveUser(@Valid  EasyAfyaUsers easyAfyaUser, BindingResult bindingResult, Model model){
+	public  String saveUser(@Valid  EasyAfyaUser easyAfyaUser, BindingResult bindingResult, Model model){
 		if (bindingResult.hasErrors()) {
 			
 			LOGGER.info("Error");
@@ -64,11 +64,12 @@ public class EasyAfyaUserController {
 			return "admin/index";
 		}
 		
+		easyAfyaUserService.saveUser(easyAfyaUser);
 				
-		easyAfyaUserService.save(new EasyAfyaUsers(easyAfyaUser.getFisrtName(),
-				easyAfyaUser.getSecondName(), 
-				easyAfyaUser.getLastName(),
-				easyAfyaUser.getUserName()));
+		//easyAfyaUserService.save(new EasyAfyaUsers(easyAfyaUser.getFisrtName(),
+				//easyAfyaUser.getSecondName(), 
+				//easyAfyaUser.getLastName(),
+				//easyAfyaUser.getUserName()));
 		
 		//Retrieve the current list
 		//model.addAttribute("usersList", easyAfyaUserService.findAll());

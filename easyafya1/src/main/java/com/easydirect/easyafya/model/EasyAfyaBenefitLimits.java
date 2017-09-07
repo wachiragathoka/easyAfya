@@ -47,5 +47,5 @@ public class EasyAfyaBenefitLimits {
 	private Date dateCreated;
 	
 	@ManyToOne
-	private EasyAfyaUsers easyafya_user_id;
+	private EasyAfyaUser easyafya_user_id;
 }

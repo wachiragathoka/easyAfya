@@ -55,14 +55,22 @@ public class EasyAfyaProductsController {
 	@GetMapping(path = "/category")
 	public String addEasyAfyaCategory(Model model) {
 
+		
+		
 		model.addAttribute("easyafyacategory", new EasyAfyaCategory());
 		model.addAttribute("CategoriesList", easyAfyaCategoryService.findAll());
 		return "admin/easyafya_cat";
 	}
 
+	/**
+	 * 
+	 * @param easyAfyaCategory
+	 * @param bindingResult
+	 * @return
+	 */
 	@PostMapping(path = "/category")
-	public String saveEasyAfyaCategory(@Valid EasyAfyaCategory easyAfyaCategory, BindingResult bindingResult,
-			Model model) {
+	public String saveEasyAfyaCategory(@Valid EasyAfyaCategory easyAfyaCategory, BindingResult bindingResult) {
+		
 		if (bindingResult.hasErrors()) {
 
 			LOGGER.info("Error");
@@ -73,9 +81,7 @@ public class EasyAfyaProductsController {
 		easyAfyaCategoryService
 				.save(new EasyAfyaCategory(easyAfyaCategory.getCategoryName(), easyAfyaCategory.getDescription()));
 
-		model.addAttribute("CategoriesList", easyAfyaCategoryService.findAll());
-
-		return "redirect:category";
+		return "redirect : category";
 	}
 
 	/**

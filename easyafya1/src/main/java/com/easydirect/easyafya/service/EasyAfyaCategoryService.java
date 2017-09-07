@@ -14,5 +14,7 @@ import com.easydirect.easyafya.model.EasyAfyaCategory;
  *
  */
 public interface EasyAfyaCategoryService extends CrudRepository<EasyAfyaCategory, Long>{
+	
+	public void populateDummy();
 
 }

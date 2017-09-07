@@ -38,7 +38,7 @@ public class EasyAfyaBenefitsCategory {
 	private Date dateCreated;
 	
 	@ManyToOne
-	private EasyAfyaUsers easyafya_user_id;
+	private EasyAfyaUser easyafya_user_id;
 
 	/**
 	 * @return the easyafya_benefit_category_id
@@ -85,14 +85,14 @@ public class EasyAfyaBenefitsCategory {
 	/**
 	 * @return the easyafya_user_id
 	 */
-	public EasyAfyaUsers getEasyafya_user_id() {
+	public EasyAfyaUser getEasyafya_user_id() {
 		return easyafya_user_id;
 	}
 
 	/**
 	 * @param easyafya_user_id the easyafya_user_id to set
 	 */
-	public void setEasyafya_user_id(EasyAfyaUsers easyafya_user_id) {
+	public void setEasyafya_user_id(EasyAfyaUser easyafya_user_id) {
 		this.easyafya_user_id = easyafya_user_id;
 	}	
 }

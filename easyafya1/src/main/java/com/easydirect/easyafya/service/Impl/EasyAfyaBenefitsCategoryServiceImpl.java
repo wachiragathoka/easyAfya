@@ -6,6 +6,8 @@ package com.easydirect.easyafya.service.Impl;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import org.springframework.transaction.annotation.Transactional;
+
 import com.easydirect.easyafya.model.EasyAfyaBenefitsCategory;
 import com.easydirect.easyafya.service.EasyAfyaBenefitsCategoryService;
 
@@ -13,6 +15,7 @@ import com.easydirect.easyafya.service.EasyAfyaBenefitsCategoryService;
  * @author MGathoka
  *
  */
+@Transactional
 public class EasyAfyaBenefitsCategoryServiceImpl implements EasyAfyaBenefitsCategoryService {
 	
 	@PersistenceContext
@@ -27,6 +30,7 @@ public class EasyAfyaBenefitsCategoryServiceImpl implements EasyAfyaBenefitsCate
 		return null;
 	}
 
+	
 	/* (non-Javadoc)
 	 * @see org.springframework.data.repository.CrudRepository#save(java.lang.Iterable)
 	 */
