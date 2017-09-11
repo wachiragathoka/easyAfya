@@ -24,6 +24,7 @@ import javax.persistence.TemporalType;
 @Table(name="easyafya_benefits_limits")
 public class EasyAfyaBenefitLimits {
 	
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long easyafya_benefits_limit_id;

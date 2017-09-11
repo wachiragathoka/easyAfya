@@ -3,9 +3,9 @@
  */
 package com.easydirect.easyafya.service;
 
-import org.springframework.data.repository.CrudRepository;
-import org.springframework.stereotype.Service;
+import java.util.List;
 
+import org.springframework.data.repository.Repository;
 import com.easydirect.easyafya.model.EasyAfyaCategory;
 
 
@@ -13,8 +13,12 @@ import com.easydirect.easyafya.model.EasyAfyaCategory;
  * @author MGathoka
  *
  */
-public interface EasyAfyaCategoryService extends CrudRepository<EasyAfyaCategory, Long>{
+public interface EasyAfyaCategoryService extends Repository<EasyAfyaCategory, Long>{
+
+	long addCategory(EasyAfyaCategory easyAfyaCategory);
+
+	List<EasyAfyaCategory> findAllEasyAfyaCategories();
 	
-	public void populateDummy();
+	
 
 }

@@ -11,6 +11,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -23,9 +25,15 @@ import javax.persistence.TemporalType;
  */
 
 @Entity
+@NamedQueries({
+	
+	@NamedQuery(name="EasyAfyaBenefitsCategory.findAllEasyAfyaBenefitsCategories",
+			query="select b from EasyAfyaBenefitsCategory b")
+})
 @Table(name="easyafya_benefits_category")
 public class EasyAfyaBenefitsCategory {
 
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long easyafya_benefit_category_id;
@@ -40,6 +48,12 @@ public class EasyAfyaBenefitsCategory {
 	@ManyToOne
 	private EasyAfyaUser easyafya_user_id;
 
+	
+	public EasyAfyaBenefitsCategory(){
+		
+	}
+	
+	
 	/**
 	 * @return the easyafya_benefit_category_id
 	 */

@@ -7,16 +7,14 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
-import org.mockito.internal.util.collections.Iterables;
-import org.springframework.data.jpa.repository.Query;
+
 import org.springframework.transaction.annotation.Transactional;
 
 import com.easydirect.easyafya.model.EasyAfyaUser;
 import com.easydirect.easyafya.service.EasyAfyaUserService;
-
-import scala.annotation.meta.field;
 
 /**
  * @author MGathoka
@@ -34,10 +32,7 @@ public class EasyAfyaUserServiceImpl implements EasyAfyaUserService {
 	public long saveUser(EasyAfyaUser easyAfyaUser){
 		em.persist(easyAfyaUser);
 		return easyAfyaUser.getEasyafya_user_id();
-	}
-	
-	
-	
+	}	
 
 	@Override
 	public EasyAfyaUser findOne(Long id) {
@@ -47,15 +42,15 @@ public class EasyAfyaUserServiceImpl implements EasyAfyaUserService {
 	
 	@Override
 	public List<EasyAfyaUser> findAll() {
-		Query query = (Query) em.createNamedQuery(
-				"query_find_all_users", EasyAfyaUser.class);
-		return ((TypedQuery<EasyAfyaUser>) query).getResultList();
+		Query query = em.createNamedQuery(
+				"EasyAfyaUser.findAll", EasyAfyaUser.class);
+		
+		return query.getResultList();		 
 	}
 
 
 	@Override
 	public boolean exists(Long id) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
@@ -73,27 +68,14 @@ public class EasyAfyaUserServiceImpl implements EasyAfyaUserService {
 	}
 
 	@Override
-	public void delete(Long id) {
+	public List<EasyAfyaUser> findByLastName(String lastName) {
 		// TODO Auto-generated method stub
-		
+		return null;
 	}
 
 	@Override
-	public void delete(EasyAfyaUser entity) {
+	public List<EasyAfyaUser> findByFirstName(String lastName) {
 		// TODO Auto-generated method stub
-		
+		return null;
 	}
-
-	@Override
-	public void delete(Iterable<? extends EasyAfyaUser> entities) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void deleteAll() {
-		// TODO Auto-generated method stub
-		
-	}
-
 }

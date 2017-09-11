@@ -16,7 +16,9 @@ import com.easydirect.easyafya.model.EasyAfyaUser;
 
 public interface EasyAfyaUserService extends Repository<EasyAfyaUser, Long>{
 
-	long saveUser(EasyAfyaUser easyAfyaUser);
+	//long saveUser(EasyAfyaUser easyAfyaUser);
+	
+	
 	
 	public boolean exists(Long id);
 	public long count();
@@ -25,15 +27,7 @@ public interface EasyAfyaUserService extends Repository<EasyAfyaUser, Long>{
 	public List<EasyAfyaUser> findByLastName(String lastName);
 	public List<EasyAfyaUser> findByFirstName(String lastName);
 	public List<EasyAfyaUser> findAll();
-	public Iterable<EasyAfyaUser> findAll(Iterable<Long> ids);
+	public Iterable<EasyAfyaUser> findAll(Iterable<Long> ids);	
 	
-	
-	
-	
-	void delete(Long id);
-	void delete(EasyAfyaUser entity);
-	void delete(Iterable<? extends EasyAfyaUser> entities);
-	void deleteAll();
-	
-	//List<EasyAfyaUsers> findAll();
+	long saveUser(EasyAfyaUser easyAfyaUser);
 }

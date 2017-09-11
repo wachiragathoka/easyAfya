@@ -11,6 +11,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -24,6 +26,10 @@ import javax.persistence.TemporalType;
  */
 
 @Entity
+@NamedQueries({
+	@NamedQuery(name="EasyAfyaMembersCategory.findAll",
+			query="select m from EasyAfyaMembersCategory m")
+})
 @Table(name="easyafya_members_categories")
 public class EasyAfyaMembersCategory {
 
@@ -38,9 +44,12 @@ public class EasyAfyaMembersCategory {
 	@Column(name="date_created",columnDefinition="TIMESTAMP")
 	private Date dateCreated;
 	
-	@ManyToOne
-	private EasyAfyaUser easyafya_user_id;
-
+	
+	public EasyAfyaMembersCategory(){
+		
+	}
+	
+	
 	/**
 	 * @return the easyafya_members_category_id
 	 */
@@ -83,18 +92,5 @@ public class EasyAfyaMembersCategory {
 		this.dateCreated = dateCreated;
 	}
 
-	/**
-	 * @return the easyafya_user_id
-	 */
-	public EasyAfyaUser getEasyafya_user_id() {
-		return easyafya_user_id;
-	}
-
-	/**
-	 * @param easyafya_user_id the easyafya_user_id to set
-	 */
-	public void setEasyafya_user_id(EasyAfyaUser easyafya_user_id) {
-		this.easyafya_user_id = easyafya_user_id;
-	}
-		
+	
 }

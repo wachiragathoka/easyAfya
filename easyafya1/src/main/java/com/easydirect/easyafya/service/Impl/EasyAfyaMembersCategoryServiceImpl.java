@@ -3,8 +3,13 @@
  */
 package com.easydirect.easyafya.service.Impl;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+
+import org.springframework.transaction.annotation.Transactional;
 
 import com.easydirect.easyafya.model.EasyAfyaMembersCategory;
 import com.easydirect.easyafya.service.EasyAfyaMembersCategoryService;
@@ -13,108 +18,21 @@ import com.easydirect.easyafya.service.EasyAfyaMembersCategoryService;
  * @author MGathoka
  *
  */
+@Transactional
 public class EasyAfyaMembersCategoryServiceImpl implements EasyAfyaMembersCategoryService {
 	
 	@PersistenceContext
 	 private EntityManager em;
 
-	/* (non-Javadoc)
-	 * @see org.springframework.data.repository.CrudRepository#save(java.lang.Object)
-	 */
 	@Override
-	public <S extends EasyAfyaMembersCategory> S save(S entity) {
-		// TODO Auto-generated method stub
-		return null;
+	public long addMemberCategory(EasyAfyaMembersCategory easyAfyaMembersCategory){
+		em.persist(easyAfyaMembersCategory);
+		return easyAfyaMembersCategory.getEasyafya_members_category_id();
 	}
-
-	/* (non-Javadoc)
-	 * @see org.springframework.data.repository.CrudRepository#save(java.lang.Iterable)
-	 */
+	
 	@Override
-	public <S extends EasyAfyaMembersCategory> Iterable<S> save(Iterable<S> entities) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<EasyAfyaMembersCategory> findAll(){
+		Query query = em.createNamedQuery("EasyAfyaMembersCategory.findAll", EasyAfyaMembersCategory.class);
+		return query.getResultList();
 	}
-
-	/* (non-Javadoc)
-	 * @see org.springframework.data.repository.CrudRepository#findOne(java.io.Serializable)
-	 */
-	@Override
-	public EasyAfyaMembersCategory findOne(Long id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	/* (non-Javadoc)
-	 * @see org.springframework.data.repository.CrudRepository#exists(java.io.Serializable)
-	 */
-	@Override
-	public boolean exists(Long id) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	/* (non-Javadoc)
-	 * @see org.springframework.data.repository.CrudRepository#findAll()
-	 */
-	@Override
-	public Iterable<EasyAfyaMembersCategory> findAll() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	/* (non-Javadoc)
-	 * @see org.springframework.data.repository.CrudRepository#findAll(java.lang.Iterable)
-	 */
-	@Override
-	public Iterable<EasyAfyaMembersCategory> findAll(Iterable<Long> ids) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	/* (non-Javadoc)
-	 * @see org.springframework.data.repository.CrudRepository#count()
-	 */
-	@Override
-	public long count() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	/* (non-Javadoc)
-	 * @see org.springframework.data.repository.CrudRepository#delete(java.io.Serializable)
-	 */
-	@Override
-	public void delete(Long id) {
-		// TODO Auto-generated method stub
-
-	}
-
-	/* (non-Javadoc)
-	 * @see org.springframework.data.repository.CrudRepository#delete(java.lang.Object)
-	 */
-	@Override
-	public void delete(EasyAfyaMembersCategory entity) {
-		// TODO Auto-generated method stub
-
-	}
-
-	/* (non-Javadoc)
-	 * @see org.springframework.data.repository.CrudRepository#delete(java.lang.Iterable)
-	 */
-	@Override
-	public void delete(Iterable<? extends EasyAfyaMembersCategory> entities) {
-		// TODO Auto-generated method stub
-
-	}
-
-	/* (non-Javadoc)
-	 * @see org.springframework.data.repository.CrudRepository#deleteAll()
-	 */
-	@Override
-	public void deleteAll() {
-		// TODO Auto-generated method stub
-
-	}
-
 }
