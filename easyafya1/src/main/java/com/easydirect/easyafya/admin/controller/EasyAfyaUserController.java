@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.easydirect.easyafya.model.EasyAfyaAgeBrackets;
+import com.easydirect.easyafya.model.EasyAfya_AfyaImaraAgeBrackets;
 import com.easydirect.easyafya.model.EasyAfyaBenefitsCategory;
 import com.easydirect.easyafya.model.EasyAfyaMembersCategory;
 import com.easydirect.easyafya.model.EasyAfyaUser;

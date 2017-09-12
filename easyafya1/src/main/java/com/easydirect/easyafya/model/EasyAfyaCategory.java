@@ -28,8 +28,12 @@ import javax.persistence.TemporalType;
 
 @Entity
 @NamedQueries({
-	@NamedQuery(name="EasyAfyaCategory.findAllEasyAfyaCategories",
-			query="select c from EasyAfyaCategory c")
+	@NamedQuery(name="EasyAfyaCategory.findAll",
+			query="select c from EasyAfyaCategory c"),
+	
+	@NamedQuery(name="EasyAfyaCategory.findById",
+			query="select c from EasyAfyaCategory c where c.category_id=:category_id")
+	
 })
 
 @Table(name="easyafya_categories")
@@ -41,7 +45,7 @@ public class EasyAfyaCategory {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long easyafya_category_id;
+	private long category_id;
 	
 	@Column(name="category_name")
 	private String categoryName;
@@ -72,14 +76,14 @@ public class EasyAfyaCategory {
 	 * @param easyafya_category_id the easyafya_category_id to set
 	 */
 	public void setEasyafya_category_id(long easyafya_category_id) {
-		this.easyafya_category_id = easyafya_category_id;
+		this.category_id = easyafya_category_id;
 	}
 
 	/**
 	 * @return the easyafya_category_id
 	 */
 	public long getEasyafya_category_id() {
-		return easyafya_category_id;
+		return category_id;
 	}
 
 

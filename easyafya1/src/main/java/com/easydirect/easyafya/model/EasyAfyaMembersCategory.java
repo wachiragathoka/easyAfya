@@ -28,18 +28,28 @@ import javax.persistence.TemporalType;
 @Entity
 @NamedQueries({
 	@NamedQuery(name="EasyAfyaMembersCategory.findAll",
-			query="select m from EasyAfyaMembersCategory m")
+			query="select m from EasyAfyaMembersCategory m"),
+	
+	@NamedQuery(name="EasyAfyaMembersCategory.findById",
+			query="select m from EasyAfyaMembersCategory m where m.id=:id"),
+	
+	@NamedQuery(name="EasyAfyaMembersCategory.findByName",
+			query="select m from EasyAfyaMembersCategory m where m.easyafya_category_name=:easyafya_category_name")
+	
 })
 @Table(name="easyafya_members_categories")
 public class EasyAfyaMembersCategory {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long easyafya_members_category_id;
+	private long id;
+	
+	@Column(name="easyafya_category_name")
+	private String easyafya_category_name;
 	
 	@Column(name="description")
 	private String description;
-	
+		
 	@Temporal(TemporalType.DATE)
 	@Column(name="date_created",columnDefinition="TIMESTAMP")
 	private Date dateCreated;
@@ -54,14 +64,14 @@ public class EasyAfyaMembersCategory {
 	 * @return the easyafya_members_category_id
 	 */
 	public long getEasyafya_members_category_id() {
-		return easyafya_members_category_id;
+		return id;
 	}
 
 	/**
 	 * @param easyafya_members_category_id the easyafya_members_category_id to set
 	 */
 	public void setEasyafya_members_category_id(long easyafya_members_category_id) {
-		this.easyafya_members_category_id = easyafya_members_category_id;
+		this.id = easyafya_members_category_id;
 	}
 
 	/**
@@ -90,6 +100,22 @@ public class EasyAfyaMembersCategory {
 	 */
 	public void setDateCreated(Date dateCreated) {
 		this.dateCreated = dateCreated;
+	}
+
+
+	/**
+	 * @return the easyafya_category_name
+	 */
+	public String getEasyafya_category_name() {
+		return easyafya_category_name;
+	}
+
+
+	/**
+	 * @param easyafya_category_name the easyafya_category_name to set
+	 */
+	public void setEasyafya_category_name(String easyafya_category_name) {
+		this.easyafya_category_name = easyafya_category_name;
 	}
 
 	

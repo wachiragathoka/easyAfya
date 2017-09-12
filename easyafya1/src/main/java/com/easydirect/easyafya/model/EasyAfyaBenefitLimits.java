@@ -36,7 +36,7 @@ public class EasyAfyaBenefitLimits {
 	private EasyAfyaBenefitsCategory easyafya_benefit_category_id;
 	
 	@ManyToOne
-	private EasyAfyaAgeBrackets easyafya_age_bracket_id;
+	private EasyAfya_AfyaImaraAgeBrackets easyafya_age_bracket_id;
 	
 	@ManyToOne
 	private EasyAfyaMembersCategory easyafya_member_category_id;

@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.easydirect.easyafya.model.EasyAfyaAgeBrackets;
+import com.easydirect.easyafya.model.EasyAfya_AfyaImaraAgeBrackets;
 import com.easydirect.easyafya.model.EasyAfyaBenefitsCategory;
 import com.easydirect.easyafya.model.EasyAfyaCategory;
 import com.easydirect.easyafya.model.EasyAfyaMembersCategory;
@@ -90,13 +90,13 @@ public class EasyAfyaProductsController {
 	 */
 	@GetMapping(path = "/agebrackets")
 	public String addAgeBrackets(Model model) {
-		model.addAttribute("agebracket", new EasyAfyaAgeBrackets());
+		model.addAttribute("agebracket", new EasyAfya_AfyaImaraAgeBrackets());
 		model.addAttribute("agebracketList", easyAfyaAgeBracketsService.findAll());
 		return "admin/agebrackets";
 	}
 
 	@PostMapping(path = "/agebrackets")
-	public String addAgeBrackets(@Valid EasyAfyaAgeBrackets easyAfyaAgeBrackets, BindingResult bindingResult) {
+	public String addAgeBrackets(@Valid EasyAfya_AfyaImaraAgeBrackets easyAfyaAgeBrackets, BindingResult bindingResult) {
 
 		if (bindingResult.hasErrors()) {
 
@@ -105,7 +105,7 @@ public class EasyAfyaProductsController {
 			return "admin/index";
 		}
 
-		easyAfyaAgeBracketsService.save(new EasyAfyaAgeBrackets(easyAfyaAgeBrackets.getEasyafya_category_id(),
+		easyAfyaAgeBracketsService.save(new EasyAfya_AfyaImaraAgeBrackets(easyAfyaAgeBrackets.getEasyafya_category_id(),
 				easyAfyaAgeBrackets.getCategoryAgeLowerLimit(), easyAfyaAgeBrackets.getCategoryAgeUpperLimit()));
 		return "redirect:agebrackets";
 	}

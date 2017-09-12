@@ -11,6 +11,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -21,15 +23,23 @@ import javax.persistence.TemporalType;
  */
 
 @Entity
-@Table(name="easyafya_age_brackets")
-public class EasyAfyaAgeBrackets {
+@NamedQueries({
+	@NamedQuery(name="EasyAfya_AfyaImaraAgeBrackets.FindAll",
+			query="select u from EasyAfya_AfyaImaraAgeBrackets u"),
+	
+	@NamedQuery(name="EasyAfya_AfyaImaraAgeBrackets.findByID",
+			query="select u from EasyAfya_AfyaImaraAgeBrackets u where id=:id"),
+	
+})
+@Table(name="easyafya_afyaimara_age_brackets")
+public class EasyAfya_AfyaImaraAgeBrackets {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private long easyafya_age_bracket_id;
+	private long id;
 	
-	@Column(name="easyafya_category_id")
-	private int easyafya_category_id;
+	@Column(name="easyafya_category_name")
+	private String easyafya_category_name;
 	
 	@Column(name="lower_limit")
 	private int categoryAgeLowerLimit;
@@ -41,17 +51,10 @@ public class EasyAfyaAgeBrackets {
 	@Column(name="date_created", columnDefinition="TIMESTAMP")
 	private Date dateCreated;
 	
-	//@ManyToOne
-	//private EasyAfyaUsers easyafya_user_id;
+	@Column (name="user_id")
+	private int easyafya_user_id=1;
 
-	public EasyAfyaAgeBrackets(int easyafya_category_id2, int categoryAgeLowerLimit2, int categoryAgeUpperLimit2) {
-		this.easyafya_category_id=easyafya_category_id2;
-		this.categoryAgeLowerLimit=categoryAgeLowerLimit2;
-		this.categoryAgeUpperLimit=categoryAgeUpperLimit2;
-	}
-
-	
-	public EasyAfyaAgeBrackets(){
+	public EasyAfya_AfyaImaraAgeBrackets(){
 		
 	}
 	
@@ -60,28 +63,28 @@ public class EasyAfyaAgeBrackets {
 	 * @return the easyafya_age_bracket_id
 	 */
 	public long getEasyafya_age_bracket_id() {
-		return easyafya_age_bracket_id;
+		return id;
 	}
 
 	/**
 	 * @param easyafya_age_bracket_id the easyafya_age_bracket_id to set
 	 */
 	public void setEasyafya_age_bracket_id(long easyafya_age_bracket_id) {
-		this.easyafya_age_bracket_id = easyafya_age_bracket_id;
+		this.id = easyafya_age_bracket_id;
 	}
 
 	/**
 	 * @return the easyafya_category_id
 	 */
-	public int getEasyafya_category_id() {
-		return easyafya_category_id;
+	public String getEasyafya_category_id() {
+		return easyafya_category_name;
 	}
 
 	/**
-	 * @param easyafya_category_id the easyafya_category_id to set
+	 * @param easyafya_category_name the easyafya_category_id to set
 	 */
-	public void setEasyafya_category_id(int easyafya_category_id) {
-		this.easyafya_category_id = easyafya_category_id;
+	public void setEasyafya_category_id(String easyafya_category_name) {
+		this.easyafya_category_name = easyafya_category_name;
 	}
 
 	/**
@@ -124,5 +127,21 @@ public class EasyAfyaAgeBrackets {
 	 */
 	public void setDateCreated(Date dateCreated) {
 		this.dateCreated = dateCreated;
+	}
+
+
+	/**
+	 * @return the easyafya_user_id
+	 */
+	public int getEasyafya_user_id() {
+		return easyafya_user_id;
+	}
+
+
+	/**
+	 * @param easyafya_user_id the easyafya_user_id to set
+	 */
+	public void setEasyafya_user_id(int easyafya_user_id) {
+		this.easyafya_user_id = easyafya_user_id;
 	}
 }
